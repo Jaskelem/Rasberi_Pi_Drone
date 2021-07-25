@@ -6,7 +6,25 @@ import threading
 import os
 
 pi_camera = VideoCamera(flip=False) # flip pi camera if upside down.
-
+#
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+#define actuators GPIOs
+ledRed = 13
+ledYlw = 19
+ledGrn = 26
+#initialize GPIO status variables
+ledRedSts = 0
+ledYlwSts = 0
+ledGrnSts = 0
+# Define led pins as output
+GPIO.setup(ledRed, GPIO.OUT)   
+GPIO.setup(ledYlw, GPIO.OUT) 
+GPIO.setup(ledGrn, GPIO.OUT) 
+# turn leds OFF 
+GPIO.output(ledRed, GPIO.LOW)
+GPIO.output(ledYlw, GPIO.LOW)
+GPIO.output(ledGrn, GPIO.LOW)
 # App Globals (do not edit)
 app = Flask(__name__)
 
